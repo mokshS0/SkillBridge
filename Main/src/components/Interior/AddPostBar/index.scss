@@ -1,0 +1,82 @@
+// The main container for the add post bar
+.add-post-bar {
+    // Styling for the bar section
+    .bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: white;
+        border-bottom: solid 2px #dfdeda;
+
+        // Styling for the text within the bar
+        .bar-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    }
+}
+
+// Configuration for the add post dialog
+.addPost-Dialog {
+    width: 50vw;
+
+    // Styling for the dialog content
+    .post-dialog {
+        // Styles for the container holding selected tags
+        .selected-tags {
+            margin-top: 1rem !important;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+
+            // Styling for individual selected tag
+            .selected-tag {
+                cursor: pointer;
+            }
+        }
+
+        // Container for form elements
+        .form-container {
+            // Styling for form labels
+            .form-label {
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            // Margin for Google Forms link input
+            #googleFormLink {
+                margin-top: 20px;
+            }
+        }
+
+        // General field styling
+        .field {
+            margin-bottom: 1.5rem;
+        }
+
+        // Width for chips input
+        .chips-input {
+            width: 100%;
+        }
+
+        // Margin for dropdown containers
+        .dropdown-tag-container {
+            margin-bottom: 1.5rem;
+        }
+
+        // Styling for the footer of the dialog
+        .dialog-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+    }
+}
+
+// Responsive styling for smaller screens
+@media (max-width:768px) {
+    .addPost-Dialog {
+        width: 100vw;
+    }
+}

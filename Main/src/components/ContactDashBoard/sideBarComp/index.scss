@@ -1,0 +1,87 @@
+// Container for the sidebar
+.sidebar-container {
+    top: 60px;
+    left: 0;
+    width: 80px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    border-right: solid 2px #dfdeda;
+
+
+    // Styles for the sidebar
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        height: 100%;
+    }
+
+    // Styles for the menu items
+    .menu-item {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    // Hover effect for menu items
+    .menu-item:hover {
+        background-color: #e0e0e0;
+    }
+
+    // Styling for PrimeIcons within menu items
+    .menu-item .pi {
+        font-size: 1.5rem;
+        color: #333;
+    }
+}
+
+// Container for the mobile navbar
+.mobile-navbar-container {
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    bottom: 0; /* Place the navbar at the bottom */
+    z-index: 1000;
+
+    // Styles for the mobile navbar
+    .mobile-navbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    // Styles for the menu items in the mobile navbar
+    .menu-item {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    // Hover effect for menu items in the mobile navbar
+    .menu-item:hover {
+        background-color: #e0e0e0;
+    }
+
+    // Styling for PrimeIcons within menu items in the mobile navbar
+    .menu-item .pi {
+        font-size: 1.5rem;
+        color: #333;
+    }
+}

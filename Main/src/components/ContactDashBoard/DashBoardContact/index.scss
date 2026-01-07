@@ -1,0 +1,149 @@
+.DashBoard-ContactWrapper-Primary {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1%;
+
+    .contact-introHeader-wrap {
+        width: 100%;
+        height: auto;
+        padding: 5%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 0%;
+        background-color: white;
+        border-radius: 10px;
+
+        div {
+            img {
+                width: 60%;
+                border-radius: 50%;
+                transform: translate(50%);
+                margin-bottom: 20px;
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .contact-AboutCard-wrapper {
+        width: 100%;
+        height: auto;
+        min-height: 20vh;
+        background-color: white;
+        border-radius: 10px;
+        padding: 5%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 5%;
+    
+        div {
+            img {
+                width: 60%;
+                border-radius: 50%;
+                margin-bottom: 20px;
+            }
+        }
+    
+        .contact-CardText-wrap {
+            width: 100%;
+            height: auto;
+            padding: 5%;
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-start;
+            align-items: flex-start;
+    
+            h1 {
+                font-size: 2rem;
+                margin: 0; 
+                margin-bottom: 10px;
+            }
+    
+            h2 {
+                font-size: 1.5rem;
+                margin: 0; 
+                margin-bottom: 20px; 
+                font-weight: normal;
+                color: #555; 
+            }
+    
+            p {
+                font-size: 1rem;
+                margin: 0;
+                line-height: 1.5;
+                color: #333;
+            }
+        }
+
+        .contact-skills {
+            width: 100%;
+            margin-top: 5%;
+            // transform: translate(15%);
+            margin-bottom: 5%;
+        }
+        
+        .contact-tags {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .tag {
+            font-size: 1rem;
+            font-weight: 600;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        
+    }
+}
+
+.span-2 {
+    grid-column: span 2;
+}
+
+.pad-bottom-10 {
+    padding-bottom: 10% !important;
+}
+
+@media (max-width:768px) {
+    .contact-introHeader-wrap {
+        h1 {
+            font-size: 2rem !important;
+        }
+    }
+
+    .contact-AboutCard-wrapper {
+        grid-template-columns: 1fr !important;
+
+        .contact-CardText-wrap {
+                
+            h1 {
+                font-size: 1.5rem !important;
+
+            }
+    
+            h2 {
+                font-size: 1rem !important;
+            }
+    
+            p {
+                font-size: .7rem !important;
+
+            }
+        }
+    }
+
+    .contact-skills {
+        transform: translate(0%) !important;
+    }
+}
+
+.span-3 {
+    grid-column: span 3;
+}

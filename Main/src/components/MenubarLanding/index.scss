@@ -1,0 +1,36 @@
+// Removes any border radius from elements
+.border-radius-0 {
+    border-radius: 0;
+    background-color: white;
+    
+}
+
+.mr-2 {
+    margin-right: 20px;
+}
+
+// Sets a high z-index for the menubar to ensure it appears above other elements
+.p-menubar {
+    z-index: 100;
+    
+    padding-left: 25px;
+}
+
+.p-menuitem {
+    font-size: 18px;
+}
+
+
+// Ensures the menu remains above other elements by applying a high z-index
+.p-menu {
+    z-index: 100 !important;
+}
+
+// Ensures the menu overlay remains above other elements by applying a high z-index
+.p-menu-overlay {
+    z-index: 100 !important;
+}
+
+.menubar-landing {
+    padding-bottom: 0px;
+}

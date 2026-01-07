@@ -1,0 +1,429 @@
+// Card Section Styles
+.card-section {
+  width: 100%;
+  background: white;
+  position: relative;
+  z-index: 2;
+}
+
+.heroCardWrap {
+  // Features Section
+  .features-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+
+    h2 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: #001f3f;
+      margin: 0 0 1rem 0;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #6c757d;
+      margin: 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .feature-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 31, 63, 0.08);
+    border: 1px solid rgba(0, 31, 63, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #007bff, #0056b3);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 31, 63, 0.15);
+
+      &::before {
+        transform: scaleX(1);
+      }
+
+      .feature-icon {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .feature-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #001f3f;
+    margin: 0 0 1rem 0;
+    line-height: 1.3;
+  }
+
+  .feature-card p {
+    font-size: 1rem;
+    color: #495057;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  // Statistics Section
+  .stats-section {
+    background: #f8f9fa;
+    padding: 4rem 0;
+    margin: 2rem 0;
+  }
+
+  .stats-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.1;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+      &::before {
+        opacity: 0.15;
+      }
+    }
+
+    &.bg-green::before {
+      background: linear-gradient(135deg, #28a745, #20c997);
+    }
+
+    &.bg-blue::before {
+      background: linear-gradient(135deg, #007bff, #6610f2);
+    }
+
+    &.bg-red::before {
+      background: linear-gradient(135deg, #dc3545, #e83e8c);
+    }
+
+    &.bg-orange::before {
+      background: linear-gradient(135deg, #fd7e14, #ffc107);
+    }
+  }
+
+  .stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 123, 255, 0.1);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+
+    i {
+      font-size: 1.8rem;
+      color: #007bff;
+    }
+  }
+
+  .stat-content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #001f3f;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.95rem;
+    color: #6c757d;
+    font-weight: 500;
+  }
+
+  // Analytics Section
+  .analytics-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .analytics-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .chart-main {
+    .chart-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 31, 63, 0.1);
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .charts-secondary {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .chart-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 31, 63, 0.1);
+    position: relative;
+    min-height: 20vh;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  }
+
+  .chart-opportunities {
+    position: relative;
+    overflow: hidden;
+
+    .chart-text {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      z-index: 2;
+
+      .chart-label {
+        display: block;
+        font-size: 0.9rem;
+        color: #6c757d;
+        font-weight: 500;
+      }
+
+      .chart-value {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #001f3f;
+        margin-top: 0.25rem;
+      }
+    }
+
+    .chart-line {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100% !important;
+      height: auto;
+      opacity: 0.8;
+
+      @media screen and (max-width: 1000px) {
+        width: 50% !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .successCog {
+      width: 50% !important;
+      height: auto;
+    }
+
+    .successCog-Wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .schools-stat {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 31, 63, 0.1);
+    text-align: center;
+  }
+
+  .schools-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .schools-text {
+    font-size: 1rem;
+    color: #6c757d;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .schools-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #001f3f;
+    margin: 0.5rem 0;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  // Responsive Design
+  @media (max-width: 1024px) {
+    .analytics-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .chart-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .features-container,
+    .stats-container,
+    .analytics-container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      padding: 2rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      padding: 1.5rem;
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .features-container,
+    .analytics-container {
+      padding: 3rem 1rem;
+    }
+
+    .stats-section {
+      padding: 2rem 0;
+    }
+
+    .feature-card {
+      padding: 1.5rem;
+    }
+
+    .stat-card {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .schools-number {
+      font-size: 2.5rem;
+    }
+  }
+}

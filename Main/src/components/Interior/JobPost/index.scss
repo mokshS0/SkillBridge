@@ -1,0 +1,274 @@
+// Container for each job post
+.job-post-container {
+  background-color: #ffffff;
+  border: solid 2px #dfdeda;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+// Header section of the job post
+.job-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+// Container for poster information
+.poster-info {
+  display: flex;
+  align-items: center;
+}
+
+// Margin for the poster's avatar within the poster info section
+.poster-avatar {
+  margin-right: 15px;
+}
+
+// Container for the poster's details
+.poster-details {
+  display: flex;
+  flex-direction: column;
+}
+
+// Styling for the poster's username
+.poster-username {
+  font-weight: bold;
+  color: #333333;
+  font-size: 1rem;
+}
+
+// Styling for the poster's school name
+.poster-school {
+  font-size: 0.7rem;
+  color: #777777;
+}
+
+// Styling for the delete button
+.delete-button {
+  background-color: #ff5252 !important;
+  border: none;
+  box-shadow: none;
+}
+
+// Styling for the job title
+.job-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333333;
+  margin: 15px 0;
+}
+
+// Styling for the job description
+.job-description {
+  font-size: 1rem;
+  color: #555555;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+// Container for job filters (chips)
+.job-filters {
+  margin-bottom: 20px;
+
+  .p-mr-2 {
+    margin-right: 5px;
+  }
+}
+
+// Styling for the job filter chips
+.job-filters .p-chip {
+  background-color: #e8f5e9 !important;
+  color: #4caf50 !important;
+  font-weight: bold;
+  border: none;
+}
+
+// Styling for the sign-up button
+.signup-button {
+  width: 100%;
+  font-size: 1rem;
+  padding: 10px;
+  background-color: #4caf50 !important;
+  border: none;
+  box-shadow: none;
+}
+
+.job-post-container {
+  background: white;
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  .job-post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+
+    .poster-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .avatar-wrapper {
+        position: relative;
+        
+        .poster-avatar {
+          cursor: pointer;
+          transition: transform 0.2s;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+
+      .poster-details {
+        .poster-username {
+          font-weight: 600;
+          font-size: 1.1rem;
+        }
+
+        .poster-school {
+          color: #666;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .delete-button {
+      opacity: 0.8;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .job-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .job-description {
+    color: #444;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    text-align: justify;
+    // padding: rem;
+  }
+
+  .job-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+
+    .p-chip {
+      background: #f0f0f0;
+    }
+  }
+
+  .job-signup {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.avatar-overlay {
+  border-radius: 1rem;
+  
+  .p-overlaypanel-content {
+    padding: 0;
+  }
+  
+  .profile-preview {
+    min-width: 300px;
+    padding: 1.5rem;
+
+    .preview-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+
+      .preview-info {
+        h3 {
+          margin: 0;
+          font-size: 1.2rem;
+          font-weight: 600;
+          color: #333333;
+        }
+
+        p {
+          margin: 0.25rem 0 0.5rem;
+          color: #666;
+        }
+
+        .teacher-badge {
+          background: var(--primary-color);
+          color: white;
+          padding: 0.25rem 0.75rem;
+          border-radius: 12px;
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .preview-stats {
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-around;
+
+      .stat-item {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        padding-inline: 20px;
+        
+        i {
+          color: var(--primary-color);
+        }
+
+        span {
+          font-size: 0.9rem;
+          color: #444;
+        }
+      }
+    }
+
+    .preview-actions {
+      display: flex;
+      justify-content: center;
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+
+      .p-button-text {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.avatar-overlay {
+  .p-overlaypanel {
+    z-index: 1000;
+  }
+  
+  .p-overlaypanel-content {
+    padding: 0;
+  }
+}
+
+.profile-preview {
+  pointer-events: auto;
+}

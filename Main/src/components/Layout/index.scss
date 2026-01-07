@@ -1,0 +1,12 @@
+// Styles the application container to flex and expand to full height
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: auto; 
+}
+
+// Ensures the content section expands to fill available space
+.content {
+    flex: 1;
+}

@@ -1,0 +1,22 @@
+// Main container for the dashboard layout
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    background-color: #e2e8f0;
+}
+
+// Layout for the content within the dashboard
+.dashboard-layout {
+    height: 100%;
+    display: flex;
+    flex: 1;
+}
+
+// Content area within the dashboard layout
+.dashboard-content {
+    flex: 1;
+    padding: 20px;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 50%, #dbeafe 100%);
+}

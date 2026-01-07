@@ -1,0 +1,424 @@
+.development-technologies {
+    padding: 2rem;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 50%, #dbeafe 100%);
+
+    .card {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .technologies-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        
+        h1 {
+            font-size: 2.5rem;
+            color: var(--surface-900);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        p {
+            color: var(--surface-600);
+            font-size: 1.1rem;
+        }
+    }
+
+    .technology-card {
+        height: 100%;
+        border: none;
+        background: #ffffff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+            .tech-icon i {
+                transform: scale(1.1) rotate(360deg);
+            }
+        }
+
+        .tech-header {
+            position: relative;
+            padding: 2rem;
+            background: linear-gradient(135deg, 
+                rgba(var(--tech-color), 0.1) 0%,
+                rgba(var(--tech-color), 0.05) 100%);
+            border-bottom: 2px solid rgba(var(--tech-color), 0.1);
+
+            .tech-icon {
+                width: 64px;
+                height: 64px;
+                background: white;
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+
+                i {
+                    font-size: 2rem;
+                    color: var(--tech-color);
+                    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+                }
+            }
+
+            .p-badge {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                padding: 0.5rem 1rem;
+                text-align: center;
+                border-radius: 2rem;
+                font-weight: 600;
+                font-size: 0.875rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 2rem;
+                line-height: 1;
+            }
+        }
+
+        .tech-body {
+            padding: 1.5rem;
+
+            h2 {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: var(--surface-900);
+                margin: 0 0 1rem 0;
+            }
+
+            .tech-provider {
+                margin-bottom: 1.5rem;
+                
+                span {
+                    display: block;
+                    font-size: 0.875rem;
+                    color: var(--surface-600);
+                }
+
+                strong {
+                    font-size: 1rem;
+                    color: var(--surface-900);
+                }
+            }
+
+            .tech-details {
+                margin-bottom: 1.5rem;
+
+                .detail-item {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 0.5rem;
+                    
+                    i {
+                        margin-right: 0.5rem;
+                        color: var(--primary-color);
+                    }
+
+                    span {
+                        font-size: 0.875rem;
+                        color: var(--surface-700);
+                    }
+                }
+            }
+
+            .tech-features {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-bottom: 1.5rem;
+
+                .feature-tag {
+                    background: var(--surface-100);
+                    color: var(--surface-700);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 1rem;
+                    font-size: 0.875rem;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        background: var(--primary-color);
+                        color: white;
+                        transform: translateY(-2px);
+                    }
+                }
+            }
+
+            .tech-level {
+                background: var(--surface-50);
+                padding: 0.75rem;
+                border-radius: 8px;
+                
+                span {
+                    display: block;
+                    font-size: 0.75rem;
+                    color: var(--surface-600);
+                    margin-bottom: 0.25rem;
+                }
+
+                code {
+                    font-family: monospace;
+                    color: var(--primary-color);
+                    font-size: 0.875rem;
+                }
+            }
+        }
+
+        .tech-footer {
+            padding: 1.5rem;
+            background: var(--surface-50);
+            border-radius: 1rem;
+
+            .p-button {
+                width: 100%;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    transform: translateY(-2px);
+                }
+            }
+        }
+    }
+}
+
+// Responsive adjustments
+@media screen and (max-width: 768px) {
+    .development-technologies {
+        padding: 1rem;
+
+        .technologies-header {
+            margin-bottom: 2rem;
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+
+        .technology-card {
+            .tech-header {
+                padding: 1.5rem;
+                
+                .tech-icon {
+                    width: 56px;
+                    height: 56px;
+                    
+                    i {
+                        font-size: 1.75rem;
+                    }
+                }
+            }
+
+            .tech-body {
+                padding: 1.25rem;
+            }
+
+            .tech-footer {
+                padding: 1.25rem;
+            }
+        }
+    }
+}
+
+// Extra small screens (phones)
+@media screen and (max-width: 480px) {
+    .development-technologies {
+        padding: 0.75rem;
+
+        .technologies-header {
+            margin-bottom: 1.5rem;
+
+            h1 {
+                font-size: 1.75rem;
+                line-height: 1.2;
+            }
+
+            p {
+                font-size: 0.95rem;
+                padding: 0 0.5rem;
+            }
+        }
+
+        .card {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        .technology-card {
+            border-radius: 16px;
+            
+            .tech-header {
+                padding: 1.25rem;
+                
+                .tech-icon {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 12px;
+                    
+                    i {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                .p-badge {
+                    top: 0.75rem;
+                    right: 0.75rem;
+                    padding: 0.4rem 0.8rem;
+                    font-size: 0.75rem;
+                    min-height: 1.75rem;
+                }
+            }
+
+            .tech-body {
+                padding: 1rem;
+
+                h2 {
+                    font-size: 1.125rem;
+                    margin-bottom: 0.75rem;
+                }
+
+                .tech-provider {
+                    margin-bottom: 1rem;
+                }
+
+                .tech-details {
+                    margin-bottom: 1rem;
+                }
+
+                .tech-features {
+                    gap: 0.375rem;
+                    margin-bottom: 1rem;
+
+                    .feature-tag {
+                        padding: 0.2rem 0.6rem;
+                        font-size: 0.8rem;
+                    }
+                }
+
+                .tech-level {
+                    padding: 0.6rem;
+                }
+            }
+
+            .tech-footer {
+                padding: 1rem;
+
+                .p-button {
+                    font-size: 0.875rem;
+                    padding: 0.6rem 1rem;
+                }
+            }
+        }
+    }
+}
+
+// Very small screens (320px and below)
+@media screen and (max-width: 320px) {
+    .development-technologies {
+        padding: 0.5rem;
+
+        .technologies-header {
+            margin-bottom: 1rem;
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 0.875rem;
+            }
+        }
+
+        .card {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .technology-card {
+            .tech-header {
+                padding: 1rem;
+                
+                .tech-icon {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 10px;
+                    
+                    i {
+                        font-size: 1.25rem;
+                    }
+                }
+
+                .p-badge {
+                    top: 0.5rem;
+                    right: 0.5rem;
+                    padding: 0.3rem 0.6rem;
+                    font-size: 0.7rem;
+                    min-height: 1.5rem;
+                }
+            }
+
+            .tech-body {
+                padding: 0.875rem;
+
+                h2 {
+                    font-size: 1rem;
+                }
+
+                .tech-features {
+                    .feature-tag {
+                        font-size: 0.75rem;
+                        padding: 0.15rem 0.5rem;
+                    }
+                }
+            }
+
+            .tech-footer {
+                padding: 0.875rem;
+
+                .p-button {
+                    font-size: 0.8rem;
+                    padding: 0.5rem 0.75rem;
+                }
+            }
+        }
+    }
+}
+
+// Animation
+.technology-card {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+
+    @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+            animation-delay: #{$i * 0.1}s;
+        }
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

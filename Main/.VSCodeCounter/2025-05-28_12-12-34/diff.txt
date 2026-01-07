@@ -1,0 +1,62 @@
+Date : 2025-05-28 12:12:34
+Directory : c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app
+Total : 20 files,  2717 codes, -26 comments, 350 blanks, all 3041 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         14 |      1,401 |        -35 |        103 |      1,469 |
+| SCSS       |          4 |      1,271 |          9 |        247 |      1,527 |
+| JSON       |          2 |         45 |          0 |          0 |         45 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                           | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                              |         20 |      2,717 |        -26 |        350 |      3,041 |
+| . (Files)                                                                                      |          2 |         45 |          0 |          0 |         45 |
+| src                                                                                            |         18 |      2,672 |        -26 |        350 |      2,996 |
+| src (Files)                                                                                    |          3 |          6 |          0 |          3 |          9 |
+| src\components                                                                                 |         13 |      2,665 |        -26 |        345 |      2,984 |
+| src\components\AccountPage                                                                     |          1 |          1 |          0 |          1 |          2 |
+| src\components\AdminDashBoard                                                                  |          2 |      1,631 |          6 |        221 |      1,858 |
+| src\components\AdminPanel                                                                      |          1 |          2 |          0 |         -1 |          1 |
+| src\components\Interior                                                                        |          5 |        998 |        -28 |        128 |      1,098 |
+| src\components\Interior (Files)                                                                |          2 |        -13 |        -17 |         -7 |        -37 |
+| src\components\Interior\AddPostBar                                                             |          1 |        -40 |        -28 |         -9 |        -77 |
+| src\components\Interior\TeacherView                                                            |          2 |      1,051 |         17 |        144 |      1,212 |
+| src\components\Layout                                                                          |          1 |          1 |          0 |         -1 |          0 |
+| src\components\MenuInterior                                                                    |          1 |         -2 |         -3 |          0 |         -5 |
+| src\components\UserPosts                                                                       |          2 |         34 |         -1 |         -3 |         30 |
+| src\config                                                                                     |          1 |          1 |          0 |          0 |          1 |
+| src\utils                                                                                      |          1 |          0 |          0 |          2 |          2 |
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                       | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\package-lock.json                              | JSON       |         38 |          0 |          0 |         38 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\package.json                                   | JSON       |          7 |          0 |          0 |          7 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\App.js                                     | JavaScript |          4 |          0 |         -1 |          3 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\App.scss                                   | SCSS       |          3 |          0 |          3 |          6 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\components\AccountPage\openaiBio.js        | JavaScript |          1 |          0 |          1 |          2 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\components\AdminDashBoard\index.js         | JavaScript |        795 |          4 |         60 |        859 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\components\AdminDashBoard\index.scss       | SCSS       |        836 |          2 |        161 |        999 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\components\AdminPanel\index.js             | JavaScript |          2 |          0 |         -1 |          1 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\components\Interior\AddPostBar\index.js    | JavaScript |        -40 |        -28 |         -9 |        -77 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\components\Interior\TeacherView\index.js   | JavaScript |        619 |          9 |         61 |        689 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\components\Interior\TeacherView\index.scss | SCSS       |        432 |          8 |         83 |        523 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\components\Interior\applyAiFilter.js       | JavaScript |          2 |          0 |          0 |          2 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\components\Interior\index.js               | JavaScript |        -15 |        -17 |         -7 |        -39 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\components\Layout\index.js                 | JavaScript |          1 |          0 |         -1 |          0 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\components\MenuInterior\index.js           | JavaScript |         -2 |         -3 |          0 |         -5 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\components\UserPosts\index.js              | JavaScript |         34 |          0 |         -3 |         31 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\components\UserPosts\index.scss            | SCSS       |          0 |         -1 |          0 |         -1 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\config\config.js                           | JavaScript |          1 |          0 |          0 |          1 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\index.js                                   | JavaScript |         -1 |          0 |          1 |          0 |
+| c:\Users\khang\Desktop\FBLA\2024-25\SLC\slc-app\src\utils\auth.js                              | JavaScript |          0 |          0 |          2 |          2 |
+| Total                                                                                          |            |      2,717 |        -26 |        350 |      3,041 |
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

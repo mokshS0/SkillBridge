@@ -1,0 +1,35 @@
+// Main container for the code.
+.container {
+    padding: 20px;
+    border-radius: 10px;
+}
+  
+// Centering the header.
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+// Simple styling for the text.
+.projects-title {
+    margin: 0;
+    font-size: 20px;
+}
+
+//Positioning the list.
+.projects-list {
+    margin-top: 20px;
+}
+
+.card {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.card-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+

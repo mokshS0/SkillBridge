@@ -1,0 +1,167 @@
+.teacher-app-card {
+    margin: 1rem 0;
+    transition: transform 0.2s, box-shadow 0.2s;
+    
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .p-card {
+        background: var(--surface-card);
+        border-radius: 12px;
+    }
+
+    .p-card-title {
+        color: black;
+        font-size: 1.5rem;
+        font-weight: 600;
+        // margin-bottom: 0.5rem;
+    }
+
+    .p-card-subtitle {
+        color: var(--text-color-secondary);
+        font-size: 0.875rem;
+        margin-bottom: 0;
+    }
+
+    .application-content {
+        // padding: 0.5rem;
+
+        .content-section {
+            padding: .5rem 0;
+
+            .section-title {
+                color: var(--primary-color);
+                font-size: 1.1rem;
+                font-weight: 600;
+                margin-bottom: 0.75rem;
+            }
+
+            .section-text {
+                color: var(--text-color-secondary);
+                line-height: 1.5;
+                font-size: 1rem;
+                margin: 0;
+                // padding: 0 0.5rem;
+                text-align: left;
+            }
+        }
+
+        .p-divider {
+            margin: 0.5rem 0;
+            
+            &.p-divider-horizontal {
+                &:before {
+                    border-top: 1px solid var(--surface-border);
+                }
+            }
+        }
+    }
+
+    // Add some responsive padding
+    @media screen and (max-width: 768px) {
+        .application-content {
+            padding: 0.25rem;
+        }
+
+        .p-card-title {
+            font-size: 1.25rem;
+        }
+
+        .section-title {
+            font-size: 1rem;
+        }
+    }
+}
+
+.review-form {
+    .field {
+        margin-bottom: 1rem;
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    // Interview section styling
+    .interview-section {
+        background: var(--surface-ground);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border: 1px solid var(--surface-border);
+
+        .interview-section-title {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            
+            &:before {
+                content: "🗓️";
+                margin-right: 0.5rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        .field {
+            margin-bottom: 1.5rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .p-calendar {
+            .p-inputtext {
+                border-radius: 6px;
+            }
+        }
+
+        .p-inputtext {
+            border-radius: 6px;
+            border: 1px solid var(--surface-border);
+            
+            &:focus {
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 0.2rem rgba(var(--primary-color-rgb), 0.2);
+            }
+        }
+    }
+}
+
+.p-dialog-content {
+    .review-form {
+        padding: 1rem 0;
+    }
+}
+
+.p-button-success {
+    background-color: #4caf50 !important;
+}
+
+// Additional styling for better visual hierarchy
+.p-dialog {
+    .p-dialog-header {
+        background: var(--surface-card);
+        border-bottom: 1px solid var(--surface-border);
+    }
+}
+
+// Responsive adjustments for interview section
+@media screen and (max-width: 768px) {
+    .review-form {
+        .interview-section {
+            padding: 1rem;
+            margin: 0.75rem 0;
+
+            .interview-section-title {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}

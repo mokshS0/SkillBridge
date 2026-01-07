@@ -1,0 +1,148 @@
+/*
+Styles for the UserPosts component layout, ensuring a responsive and well-structured design.
+*/
+
+.userPosts-wrapper-primary {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    position: relative;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 50%, #dbeafe 100%);
+
+    /* Secondary wrapper handles content layout using a grid system */
+    .userPosts-wrapper-secondary {
+        display: grid;
+        gap: 1%;
+        padding: 5%;
+        width: 100%;
+        height: 100%;
+        
+        /* Header section for user posts */
+        .userPosts-header-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2rem !important;  
+            padding-bottom: 0;
+            margin-bottom: 0;  
+            background-color: white;
+            width: 100%;
+            height: fit-content;
+            padding: 3%;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            border-bottom: solid 1px black;
+            
+            h2 {
+                margin: 0;
+                font-size: 2rem;
+            }
+
+            i {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Content wrapper for displaying user posts */
+        .userPosts-content-wrapper {
+            p {
+                text-align: center;
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+.content-wrap {
+    padding-bottom: 100px;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Interview card specific styles */
+.interview-card {
+    .interview-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--surface-border);
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        
+        h4 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+    }
+
+    .interview-content {
+        .field {
+            margin-bottom: 1rem;
+            
+            label {
+                display: block;
+                margin-bottom: 0.25rem;
+                color: var(--text-color-secondary);
+                font-size: 0.9rem;
+            }
+
+            p {
+                margin: 0;
+                line-height: 1.5;
+                color: var(--text-color);
+                font-size: 1rem;
+            }
+        }
+        
+        .field:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/* Responsive adjustments for three-column layout */
+@media (max-width: 1200px) {
+    .userPosts-wrapper-secondary {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+        
+        .userPosts-header-wrapper {
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            i {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .userPosts-wrapper-primary {
+        .userPosts-wrapper-secondary {
+            padding: 5% 2%;
+            
+            .userPosts-header-wrapper {
+                padding: 4%;
+                
+                h2 {
+                    font-size: 1.25rem;
+                }
+                
+                i {
+                    font-size: 1.25rem;
+                }
+            }
+        }
+    }
+    
+    .interview-card {
+        .interview-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+    }
+}

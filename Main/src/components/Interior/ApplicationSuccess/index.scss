@@ -1,0 +1,43 @@
+.success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+  background-color: #e2e8f0;
+
+  .success-card {
+    max-width: 500px;
+    width: 100%;
+    
+    .success-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      gap: 1rem;
+
+      h2 {
+        color: #35a4cc;
+        margin: 1rem 0;
+      }
+
+      p {
+        color: var(--text-color-secondary);
+        margin-bottom: 2rem;
+      }
+
+      .button-container {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .p-button {
+          min-width: 200px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+// Removes any border radius from elements.
+.border-radius-0 {
+    border-radius: 0%;
+    background-color: white;
+}
+
+// Sets a high z-index for the menubar to ensure it appears above other elements.
+.p-menubar {
+    z-index: 100;
+    border: none;
+}
+
+// Ensures the menu and its overlays remain above other elements by applying a high z-index.
+.p-menu {
+    z-index: 100 !important;
+}
+
+.p-menu-overlay {
+    z-index: 100 !important;
+}
+
+.menubar-end {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .p-inputtext {
+        width: 20rem;
+    }
+
+    @media screen and (max-width: 535px) {
+        .p-inputtext {
+            width: 15rem;
+        }
+        
+    }
+}
+
+@media (max-width: 400px) {
+    .menubar-logo {
+        display: none;
+    }
+}

@@ -1,0 +1,133 @@
+// ViewSwitcherSidebar.scss
+
+$primary-color: #4f46e5;
+$primary-hover: #4338ca;
+$background-light: #f3f4f6;
+$text-dark: #374151;
+$text-light: #6b7280;
+$white: #ffffff;
+$shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$overlay-bg: rgba(0, 0, 0, 0.5);
+
+.view-switcher {
+  &__toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 50;
+    background-color: $primary-color;
+    color: $white;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: $shadow;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: $primary-hover;
+    }
+
+    &--open {
+      transform: translateX(16rem);
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $overlay-bg;
+    z-index: 40;
+  }
+
+  &__sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 16rem;
+    background-color: $background-light;
+    box-shadow: $shadow;
+    z-index: 40;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+
+    &--open {
+      transform: translateX(0);
+    }
+  }
+
+  &__content {
+    padding: 1.5rem;
+  }
+
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: $text-dark;
+    margin: 0 0 1.5rem 0;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: $text-light;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+
+    &:hover {
+      background-color: #e5e7eb;
+    }
+
+    &--active {
+      background-color: $primary-color;
+      color: $white;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+      &:hover {
+        background-color: $primary-hover;
+      }
+    }
+
+    span {
+      font-size: 0.875rem;
+    }
+
+    svg {
+      flex-shrink: 0;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .view-switcher {
+    &__sidebar {
+      width: 14rem;
+    }
+
+    &__toggle--open {
+      transform: translateX(14rem);
+    }
+  }
+}
