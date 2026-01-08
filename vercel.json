@@ -1,15 +1,8 @@
 {
-  "version": 2,
-  "name": "skillbridge",
-  "builds": [
-    {
-      "src": "Main/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
-    }
-  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "installCommand": "npm install",
+  "framework": "create-react-app",
   "routes": [
     {
       "src": "/static/(.*)",
@@ -29,10 +22,6 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "buildCommand": "cd Main && npm install && npm run build",
-  "outputDirectory": "Main/build",
-  "installCommand": "cd Main && npm install",
-  "framework": "create-react-app"
+  ]
 }
 
