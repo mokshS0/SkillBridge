@@ -1,0 +1,15 @@
+[phases.setup]
+nixPkgs = ['nodejs-18_x']
+
+[phases.install]
+cmds = ['cd Main/server && npm install']
+
+[phases.build]
+cmds = ['cd Main/server && echo "Build complete"']
+
+[start]
+cmd = 'cd Main/server && npm start'
+
+[variables]
+PORT = '4000'
+
