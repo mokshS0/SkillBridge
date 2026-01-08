@@ -9,6 +9,7 @@ import { Calendar } from 'primereact/calendar';
 import { InputText } from 'primereact/inputtext';
 import './index.scss';
 import { useNavigate } from 'react-router-dom';
+import { apiBaseUrl } from '../../../config/config';
 
 const TeacherAppCard = ({ application, onApplicationUpdate }) => {
     const [studentInfo, setStudentInfo] = useState(null);
@@ -34,7 +35,7 @@ const TeacherAppCard = ({ application, onApplicationUpdate }) => {
     const fetchApplicationDetails = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:4000/applications/${application.application_id}`, {
+            const response = await fetch(`${apiBaseUrl}/applications/${application.application_id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -65,7 +66,7 @@ const TeacherAppCard = ({ application, onApplicationUpdate }) => {
         const fetchStudentInfo = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch(`http://localhost:4000/get-user/${application.user_id}`, {
+                const response = await fetch(`${apiBaseUrl}/get-user/${application.user_id}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -116,7 +117,7 @@ const TeacherAppCard = ({ application, onApplicationUpdate }) => {
             }
 
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:4000/applications/${application.application_id}/status`, {
+            const response = await fetch(`${apiBaseUrl}/applications/${application.application_id}/status`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -167,7 +168,7 @@ const TeacherAppCard = ({ application, onApplicationUpdate }) => {
             }
 
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:4000/applications/${application.application_id}/status`, {
+            const response = await fetch(`${apiBaseUrl}/applications/${application.application_id}/status`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -190,7 +191,7 @@ const TeacherAppCard = ({ application, onApplicationUpdate }) => {
     const handleDelete = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:4000/applications/${application.application_id}`, {
+            const response = await fetch(`${apiBaseUrl}/applications/${application.application_id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

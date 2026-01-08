@@ -8,6 +8,7 @@ import { confirmDialog } from 'primereact/confirmdialog';
 import { AuthContext } from "../../../context/AuthContext";
 import "./index.scss";
 import { authUtils } from "../../../utils/auth";
+import { apiBaseUrl } from "../../../config/config";
 
 const AchieveComponent = ({ onUpdate }) => {
   const { user } = useContext(AuthContext);
@@ -22,7 +23,7 @@ const AchieveComponent = ({ onUpdate }) => {
   const fetchAchievements = async () => {
     try {
       const response = await fetch(
-        "http://localhost:4000/user_achievements"
+        `${apiBaseUrl}/user_achievements`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch achievements.");
@@ -71,7 +72,7 @@ const AchieveComponent = ({ onUpdate }) => {
         };
 
         const response = await fetch(
-          "http://localhost:4000/user_achievements",
+          `${apiBaseUrl}/user_achievements`,
           {
             method: "POST",
             headers: {
@@ -101,7 +102,7 @@ const AchieveComponent = ({ onUpdate }) => {
   const deleteAchievement = async (achievementId) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/user_achievements/${achievementId}`,
+        `${apiBaseUrl}/user_achievements/${achievementId}`,
         {
           method: "DELETE",
         }

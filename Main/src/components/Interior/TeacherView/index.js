@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import MenuInterior from '../../MenuInterior'
 import AddPostBar from '../AddPostBar'
 import ViewSwitcherSidebar from '../../PreviewModule';
+import { apiBaseUrl } from '../../../config/config';
 
 import { Button } from 'primereact/button'
 import { Dialog } from 'primereact/dialog'
@@ -84,7 +85,7 @@ export default function TeacherDashboard() {
   const fetchJobPost = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:4000/job_postings', {
+      const response = await fetch(`${apiBaseUrl}/job_postings`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -140,7 +141,7 @@ export default function TeacherDashboard() {
     try {
       // First get all job postings by this user
       const token = localStorage.getItem('token');
-      const jobsResponse = await axios.get(`http://localhost:4000/job_postings`, {
+      const jobsResponse = await axios.get(`${apiBaseUrl}/job_postings`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -154,7 +155,7 @@ export default function TeacherDashboard() {
       const allApplications = []
       for (const job of userJobs) {
         const applicationsResponse = await axios.get(
-          `http://localhost:4000/applications/job/${job.job_id}`,
+          `${apiBaseUrl}/applications/job/${job.job_id}`,
           {
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -202,7 +203,7 @@ export default function TeacherDashboard() {
     const fetchUsers = async () => {
       try {
         const response = await authUtils.authenticatedRequest(
-          'http://localhost:4000/users'
+          `${apiBaseUrl}/users`
         )
         setUserList(response)
         console.log('User List:', response)
@@ -275,7 +276,7 @@ export default function TeacherDashboard() {
     if (studentInfoMap[userId]) return
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:4000/get-user/${userId}`, {
+      const res = await fetch(`${apiBaseUrl}/get-user/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -292,7 +293,7 @@ const fetchAppDetails = async (app) => {
   try {
     const token = localStorage.getItem('token');
     const res = await fetch(
-      `http://localhost:4000/applications/${app.application_id}`,
+      `${apiBaseUrl}/applications/${app.application_id}`,
       {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -344,7 +345,7 @@ const fetchAppDetails = async (app) => {
 
       const token = localStorage.getItem('token');
       const response = await fetch(
-        `http://localhost:4000/applications/${selectedApp.application_id}/status`,
+        `${apiBaseUrl}/applications/${selectedApp.application_id}/status`,
         {
           method: 'PUT',
           headers: { 
@@ -393,7 +394,7 @@ const fetchAppDetails = async (app) => {
 
       const token = localStorage.getItem('token');
       await fetch(
-        `http://localhost:4000/applications/${selectedApp.application_id}/status`,
+        `${apiBaseUrl}/applications/${selectedApp.application_id}/status`,
         {
           method: 'PUT',
           headers: { 
@@ -412,7 +413,7 @@ const fetchAppDetails = async (app) => {
   const handleDelete = async () => {
     try {
       await fetch(
-        `http://localhost:4000/applications/${selectedApp.application_id}`,
+        `${apiBaseUrl}/applications/${selectedApp.application_id}`,
         {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },

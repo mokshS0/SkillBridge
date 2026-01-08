@@ -1,9 +1,11 @@
+import { apiBaseUrl } from '../../config/config';
+
 export async function applyAiFilter(jobPosts, users) {
     try {
         console.log('Job Posts:', jobPosts);
         console.log('Users:', users);
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:4000/generate-filter', {
+        const response = await fetch(`${apiBaseUrl}/generate-filter`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json', 

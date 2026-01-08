@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { Avatar } from 'primereact/avatar'
 import { Dialog } from 'primereact/dialog'
 import { Button } from 'primereact/button'
+import { apiBaseUrl } from '../../config/config'
 import {
   Users,
   LogOut,
@@ -32,7 +33,7 @@ const AdminDashBoard = () => {
     const fetchUsers = async () => {
       try {
         const response = await authUtils.authenticatedRequest(
-          'http://localhost:4000/users'
+          `${apiBaseUrl}/users`
         )
         setUserList(response)
         console.log('User List:', response)
@@ -47,7 +48,7 @@ const AdminDashBoard = () => {
   const unapprovedPosts = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/job_postings/pending`, {
+      const response = await fetch(`${apiBaseUrl}/job_postings/pending`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -84,7 +85,7 @@ const AdminDashBoard = () => {
   const fetchJobPost = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:4000/job_postings', {
+      const response = await fetch(`${apiBaseUrl}/job_postings`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -199,7 +200,7 @@ const AdminDashBoard = () => {
 
         const token = localStorage.getItem('token');
         const response = await fetch(
-          `http://localhost:4000/job_postings/${jobId}`,
+          `${apiBaseUrl}/job_postings/${jobId}`,
           {
             method: 'DELETE',
             headers: {
@@ -232,7 +233,7 @@ const AdminDashBoard = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(
-        `http://localhost:4000/job_postings/${jobId}/toggle-approval`,
+        `${apiBaseUrl}/job_postings/${jobId}/toggle-approval`,
         {
           method: 'PUT',
           headers: {
@@ -283,7 +284,7 @@ const AdminDashBoard = () => {
 
         const token = localStorage.getItem('token');
         const response = await fetch(
-          `http://localhost:4000/job_postings/${jobId}`,
+          `${apiBaseUrl}/job_postings/${jobId}`,
           {
             method: 'DELETE',
             headers: {

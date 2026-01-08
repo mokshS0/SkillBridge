@@ -12,6 +12,7 @@ import { confirmDialog, ConfirmDialog } from 'primereact/confirmdialog';
 import 'quill/dist/quill.snow.css';
 import { useNavigate } from 'react-router-dom';
 import { authUtils } from '../../../utils/auth';
+import { apiBaseUrl } from '../../../config/config';
 
 export default function AddPostBar({ visible, onClose, addJobPost }) {
     const [postTitle, setPostTitle] = useState('');
@@ -84,7 +85,7 @@ export default function AddPostBar({ visible, onClose, addJobPost }) {
                         date_created: todaySQL,
                     };
 
-                    const response = await fetch('http://localhost:4000/job_postings', {
+                    const response = await fetch(`${apiBaseUrl}/job_postings`, {
                         method: 'POST',
                         headers: { 
                             'Content-Type': 'application/json',

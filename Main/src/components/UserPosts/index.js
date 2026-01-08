@@ -13,6 +13,7 @@ import ApplicationCard from '../Interior/ApplicationCard'
 import axios from 'axios'
 import TeacherAppCard from '../Interior/AppCardTeacher'
 import PendingPost from '../UserPosts/pendingPost'
+import { apiBaseUrl } from '../../config/config'
 
 export default function UserPosts() {
   // const { user } = useContext(AuthContext);
@@ -29,7 +30,7 @@ export default function UserPosts() {
     const fetchUsers = async () => {
       try {
         const response = await authUtils.authenticatedRequest(
-          'http://localhost:4000/users'
+          `${apiBaseUrl}/users`
         )
         setUserList(response)
         console.log('User List:', response)
@@ -45,7 +46,7 @@ export default function UserPosts() {
     try {
       // First get all job postings by this user
       const token = localStorage.getItem('token');
-      const jobsResponse = await axios.get(`http://localhost:4000/job_postings`, {
+      const jobsResponse = await axios.get(`${apiBaseUrl}/job_postings`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -59,7 +60,7 @@ export default function UserPosts() {
       const allApplications = []
       for (const job of userJobs) {
         const applicationsResponse = await axios.get(
-          `http://localhost:4000/applications/job/${job.job_id}`,
+          `${apiBaseUrl}/applications/job/${job.job_id}`,
           {
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -73,7 +74,7 @@ export default function UserPosts() {
           applicationsResponse.data.map(async (app) => {
             try {
               const appToken = localStorage.getItem('token');
-              const userResponse = await fetch(`http://localhost:4000/get-user/${app.user_id}`, {
+              const userResponse = await fetch(`${apiBaseUrl}/get-user/${app.user_id}`, {
                 headers: {
                   'Authorization': `Bearer ${appToken}`,
                   'Content-Type': 'application/json'
@@ -140,7 +141,7 @@ export default function UserPosts() {
   const unapprovedPosts = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/job_postings/pending`, {
+      const response = await fetch(`${apiBaseUrl}/job_postings/pending`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -177,7 +178,7 @@ export default function UserPosts() {
   const fetchJobPost = async () => {
       try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:4000/job_postings', {
+      const response = await fetch(`${apiBaseUrl}/job_postings`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -224,7 +225,7 @@ export default function UserPosts() {
       try {
         const token = localStorage.getItem('token');
         const response = await axios.get(
-          `http://localhost:4000/users/${userData.user_id}/admin-status`,
+          `${apiBaseUrl}/users/${userData.user_id}/admin-status`,
           {
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -251,7 +252,7 @@ export default function UserPosts() {
       try {
         const token = localStorage.getItem('token');
         const response = await fetch(
-          `http://localhost:4000/applications/user/${userData.user_id}`,
+          `${apiBaseUrl}/applications/user/${userData.user_id}`,
           {
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -303,7 +304,7 @@ export default function UserPosts() {
         if (!jobId) throw new Error('Job ID not found.')
 
         const response = await fetch(
-          `http://localhost:4000/job_postings/${jobId}`,
+          `${apiBaseUrl}/job_postings/${jobId}`,
           {
             method: 'DELETE',
           }

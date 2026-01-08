@@ -5,6 +5,7 @@ import { Button } from "primereact/button";
 import { Chip } from "primereact/chip";
 import { OverlayPanel } from "primereact/overlaypanel";
 import "./index.scss";
+import { apiBaseUrl } from '../../../config/config';
 
 const JobPost = ({ 
   posterAvatar, 
@@ -29,7 +30,7 @@ const JobPost = ({
 
   const fetchJobCount = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/users/${posterId}/job-posts/count`);
+      const response = await fetch(`${apiBaseUrl}/users/${posterId}/job-posts/count`);
       if (!response.ok) {
         throw new Error('Failed to fetch job count');
       }
@@ -43,7 +44,7 @@ const JobPost = ({
 
   const fetchProjectCount = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/users/${posterId}/projects/count`);
+      const response = await fetch(`${apiBaseUrl}/users/${posterId}/projects/count`);
       if (!response.ok) {
         throw new Error('Failed to fetch project count');
       }

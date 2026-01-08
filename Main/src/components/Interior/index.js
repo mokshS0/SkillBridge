@@ -31,6 +31,7 @@ import { useLocation } from 'react-router-dom'
 import ViewSwitcherSidebar from '../PreviewModule'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import { apiBaseUrl } from '../../config/config'
 dayjs.extend(relativeTime)
 
 export default function Interior() {
@@ -116,7 +117,7 @@ export default function Interior() {
     const fetchUsers = async () => {
       try {
         const response = await authUtils.authenticatedRequest(
-          'http://localhost:4000/users'
+          `${apiBaseUrl}/users`
         )
         setUserList(response)
       } catch (error) {
@@ -132,7 +133,7 @@ export default function Interior() {
     const fetchJobPost = async () => {
       try {
         const response = await authUtils.authenticatedRequest(
-          'http://localhost:4000/job_postings'
+          `${apiBaseUrl}/job_postings`
         )
 
         if (response && Array.isArray(response)) {
@@ -191,7 +192,7 @@ export default function Interior() {
         try {
           const token = localStorage.getItem('token');
           const response = await fetch(
-            `http://localhost:4000/applications/user/${userData.user_id}`,
+            `${apiBaseUrl}/applications/user/${userData.user_id}`,
             {
               headers: {
                 'Authorization': `Bearer ${token}`,
@@ -249,7 +250,7 @@ export default function Interior() {
       try {
         const token = localStorage.getItem('token');
         const response = await fetch(
-          `http://localhost:4000/applications/user/${userData.user_id}`,
+          `${apiBaseUrl}/applications/user/${userData.user_id}`,
           {
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -414,10 +415,10 @@ export default function Interior() {
     try {
       // Get current user's skills, projects, achievements, and history
       const [skillsRes, projectsRes, achievementsRes, historyRes] = await Promise.all([
-        authUtils.authenticatedRequest(`http://localhost:4000/user_skills?user_id=${userData.user_id}`),
-        authUtils.authenticatedRequest(`http://localhost:4000/user_projects?user_id=${userData.user_id}`),
-        authUtils.authenticatedRequest(`http://localhost:4000/user_achievements?user_id=${userData.user_id}`),
-        authUtils.authenticatedRequest(`http://localhost:4000/user_history?user_id=${userData.user_id}`)
+        authUtils.authenticatedRequest(`${apiBaseUrl}/user_skills?user_id=${userData.user_id}`),
+        authUtils.authenticatedRequest(`${apiBaseUrl}/user_projects?user_id=${userData.user_id}`),
+        authUtils.authenticatedRequest(`${apiBaseUrl}/user_achievements?user_id=${userData.user_id}`),
+        authUtils.authenticatedRequest(`${apiBaseUrl}/user_history?user_id=${userData.user_id}`)
       ])
 
       const userProfile = {

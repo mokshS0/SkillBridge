@@ -3,6 +3,7 @@ import MenubarLanding from '../MenubarLanding';
 import React, { useState, useRef, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import { apiBaseUrl } from '../../config/config';
 import { Calendar } from 'primereact/calendar';
 import { 
     User, 
@@ -85,7 +86,7 @@ export default function SignUp() {
         };
 
         try {
-            const response = await fetch('http://localhost:4000/users', {
+            const response = await fetch(`${apiBaseUrl}/users`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

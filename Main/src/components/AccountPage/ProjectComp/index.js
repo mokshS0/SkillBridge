@@ -8,6 +8,7 @@ import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 
 import "./index.scss";
 import { authUtils } from "../../../utils/auth";
+import { apiBaseUrl } from "../../../config/config";
 
 export default function ProjectComponent({ onUpdate }) {
 
@@ -31,7 +32,7 @@ export default function ProjectComponent({ onUpdate }) {
   const fetchProjects = async () => {
     try {
       const response = await fetch(
-        "http://localhost:4000/user_projects"
+        `${apiBaseUrl}/user_projects`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch projects.");
@@ -64,7 +65,7 @@ export default function ProjectComponent({ onUpdate }) {
   const addProject = async () => {
     if (formData.name && formData.description) {
       try {
-        const response = await fetch("http://localhost:4000/user_projects", {
+        const response = await fetch(`${apiBaseUrl}/user_projects`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -96,7 +97,7 @@ export default function ProjectComponent({ onUpdate }) {
   // Delete a project from the table.
   const deleteProject = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4000/user_projects/${id}`, {
+      const response = await fetch(`${apiBaseUrl}/user_projects/${id}`, {
         method: "DELETE",
       });
   

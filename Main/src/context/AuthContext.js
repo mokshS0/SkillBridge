@@ -1,5 +1,6 @@
 // AuthContext.js
 import React, { createContext, useState, useEffect } from 'react';
+import { apiBaseUrl } from '../config/config';
 
 export const AuthContext = createContext();
 
@@ -9,8 +10,8 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState([]);
     const [username, setUsername] = useState(null);
 
-    const apiUrl = "http://localhost:4000"
-    const testUrl = "http://localhost:4000"
+    const apiUrl = apiBaseUrl
+    const testUrl = apiBaseUrl
 
     /**
      * Fetches user account information based on the provided username.

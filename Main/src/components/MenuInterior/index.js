@@ -6,6 +6,7 @@ import { AutoComplete } from 'primereact/autocomplete';
 // import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/img/logo2.png';
 import { authUtils } from '../../utils/auth';
+import { apiBaseUrl } from '../../config/config';
 
 export default function MenuInterior() {
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ export default function MenuInterior() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch('http://localhost:4000/users');
+                const response = await fetch(`${apiBaseUrl}/users`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch user data.');
                 }

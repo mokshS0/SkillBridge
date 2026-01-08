@@ -8,6 +8,7 @@ import { confirmDialog } from 'primereact/confirmdialog';
 import { AuthContext } from "../../../context/AuthContext";
 import "./index.scss";
 import { authUtils } from "../../../utils/auth";
+import { apiBaseUrl } from "../../../config/config";
 import { removeHooks } from "dompurify";
 
 const HistoryComponent = ({ onUpdate }) => {
@@ -25,7 +26,7 @@ const HistoryComponent = ({ onUpdate }) => {
   const fetchHistory = async () => {
     try {
       const response = await fetch(
-        "http://localhost:4000/user_history"
+        `${apiBaseUrl}/user_history`
       );
       console.log(response);
       if (!response.ok) {
@@ -84,7 +85,7 @@ const HistoryComponent = ({ onUpdate }) => {
         };
 
         const response = await fetch(
-          "http://localhost:4000/user_history",
+          `${apiBaseUrl}/user_history`,
           {
             method: "POST",
             headers: {
@@ -114,7 +115,7 @@ const HistoryComponent = ({ onUpdate }) => {
   const deleteHistory = async (historyId) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/user_history/${historyId}`,
+        `${apiBaseUrl}/user_history/${historyId}`,
         {
           method: "DELETE",
         }

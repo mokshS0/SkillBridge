@@ -6,6 +6,7 @@ import './index.scss';
 import { useLocation, useNavigate } from 'react-router-dom';
 import MenuInterior from '../../MenuInterior';
 import { authUtils } from '../../../utils/auth';
+import { apiBaseUrl } from '../../../config/config';
 
 const JobApplication = ({ posterUsername, posterSchool, jobTitle, userid, jobId }) => {
     const location = useLocation();
@@ -31,7 +32,7 @@ const JobApplication = ({ posterUsername, posterSchool, jobTitle, userid, jobId 
             
             // Check for existing applications
             const checkResponse = await fetch(
-                `http://localhost:4000/applications?user_id=${userId}&job_id=${jobId}`,
+                `${apiBaseUrl}/applications?user_id=${userId}&job_id=${jobId}`,
                 {
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -84,7 +85,7 @@ const JobApplication = ({ posterUsername, posterSchool, jobTitle, userid, jobId 
                     }, null, 2));
             
                     const token = localStorage.getItem('token');
-                    const response = await fetch('http://localhost:4000/applications', {
+                    const response = await fetch(`${apiBaseUrl}/applications`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

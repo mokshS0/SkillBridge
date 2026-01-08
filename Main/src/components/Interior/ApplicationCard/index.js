@@ -7,6 +7,7 @@ import { ProgressSpinner } from 'primereact/progressspinner'
 import { Toast } from 'primereact/toast'
 import './index.scss'
 import { Divider } from 'primereact/divider'
+import { apiBaseUrl } from '../../../config/config'
 
 const ApplicationCard = ({ application }) => {
   const [jobTitle, setJobTitle] = useState('')
@@ -36,7 +37,7 @@ const ApplicationCard = ({ application }) => {
     const fetchJobTitle = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:4000/job_postings', {
+        const response = await fetch(`${apiBaseUrl}/job_postings`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -78,7 +79,7 @@ const ApplicationCard = ({ application }) => {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(
-        `http://localhost:4000/applications/${application.application_id}`,
+        `${apiBaseUrl}/applications/${application.application_id}`,
         {
           method: 'DELETE',
           headers: {
@@ -115,7 +116,7 @@ const ApplicationCard = ({ application }) => {
       // Generate interview questions based on the job
       const token = localStorage.getItem('token');
       const response = await fetch(
-        'http://localhost:4000/api/interview/generate-questions',
+        `${apiBaseUrl}/api/interview/generate-questions`,
         {
           method: 'POST',
           headers: {
@@ -204,7 +205,7 @@ const ApplicationCard = ({ application }) => {
         // Fallback: try server-side TTS
         const token = localStorage.getItem('token');
       const response = await fetch(
-        'http://localhost:4000/api/interview/text-to-speech',
+        `${apiBaseUrl}/api/interview/text-to-speech`,
         {
           method: 'POST',
           headers: {
@@ -382,7 +383,7 @@ const ApplicationCard = ({ application }) => {
 
       const token = localStorage.getItem('token');
       const response = await fetch(
-        'http://localhost:4000/api/interview/speech-to-text',
+        `${apiBaseUrl}/api/interview/speech-to-text`,
         {
           method: 'POST',
           headers: {
@@ -468,7 +469,7 @@ const ApplicationCard = ({ application }) => {
       // Generate feedback based on responses
       const token = localStorage.getItem('token');
       const response = await fetch(
-        'http://localhost:4000/api/interview/generate-feedback',
+        `${apiBaseUrl}/api/interview/generate-feedback`,
         {
           method: 'POST',
           headers: {

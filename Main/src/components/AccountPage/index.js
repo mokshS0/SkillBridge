@@ -28,6 +28,7 @@ import HistoryCompnent from './HistoryComp'
 import SkillComponent from './SkillComp'
 import ProjectComponent from './ProjectComp'
 import AchieveComponent from './AchieveComp'
+import { apiBaseUrl } from '../../config/config'
 
 export default function AccountPage() {
   // Context and navigation
@@ -109,7 +110,7 @@ Dedicated to continuous learning and professional growth.`
   // Data fetching functions
   const fetchHistory = async (userId) => {
     try {
-      const response = await fetch('http://localhost:4000/user_history')
+      const response = await fetch(`${apiBaseUrl}/user_history`)
       if (!response.ok) {
         throw new Error('Failed to fetch user history.')
       }
@@ -135,7 +136,7 @@ Dedicated to continuous learning and professional growth.`
 
   const fetchSkills = async (userId) => {
     try {
-      const response = await fetch('http://localhost:4000/user_skills')
+      const response = await fetch(`${apiBaseUrl}/user_skills`)
       if (!response.ok) {
         throw new Error('Failed to fetch user skills.')
       }
@@ -159,7 +160,7 @@ Dedicated to continuous learning and professional growth.`
 
   const fetchProjects = async (userId) => {
     try {
-      const response = await fetch('http://localhost:4000/user_projects')
+      const response = await fetch(`${apiBaseUrl}/user_projects`)
       if (!response.ok) {
         throw new Error('Failed to fetch projects.')
       }
@@ -183,7 +184,7 @@ Dedicated to continuous learning and professional growth.`
 
   const fetchAchievements = async (userId) => {
     try {
-      const response = await fetch('http://localhost:4000/user_achievements')
+      const response = await fetch(`${apiBaseUrl}/user_achievements`)
       if (!response.ok) {
         throw new Error('Failed to fetch achievements.')
       }
@@ -299,7 +300,7 @@ Dedicated to continuous learning and professional growth.`
     
     try {
       console.log('Updating user information:', updatedUserInfo)
-      const response = await fetch(`http://localhost:4000/users/${userData.user_id}`, {
+      const response = await fetch(`${apiBaseUrl}/users/${userData.user_id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

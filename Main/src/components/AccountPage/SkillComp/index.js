@@ -8,6 +8,7 @@ import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { AuthContext } from "../../../context/AuthContext";
 import "./index.scss";
 import { authUtils } from "../../../utils/auth";
+import { apiBaseUrl } from "../../../config/config";
 
 const SkillComponent = ({ onUpdate }) => {
   const { user } = useContext(AuthContext);
@@ -22,7 +23,7 @@ const SkillComponent = ({ onUpdate }) => {
   const fetchSkills = async () => {
     try {
       const response = await fetch(
-        "http://localhost:4000/user_skills"
+        `${apiBaseUrl}/user_skills`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch user data.");
@@ -72,7 +73,7 @@ const SkillComponent = ({ onUpdate }) => {
         console.log(formData)
 
         const response = await fetch(
-          "http://localhost:4000/user_skills",
+          `${apiBaseUrl}/user_skills`,
           {
             method: "POST",
             headers: {
@@ -103,7 +104,7 @@ const SkillComponent = ({ onUpdate }) => {
   const deleteSkill = async (skillId) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/user_skills/${skillId}`,
+        `${apiBaseUrl}/user_skills/${skillId}`,
         {
           method: "DELETE",
         }

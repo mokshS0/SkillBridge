@@ -13,6 +13,7 @@ import ApplicationCard from '../Interior/ApplicationCard';
 import axios from 'axios';
 import TeacherAppCard from '../Interior/AppCardTeacher';
 import PendingPost from '../UserPosts/pendingPost';
+import { apiBaseUrl } from '../../config/config';
 
 export default function AdminPanel() {
     // const { user } = useContext(AuthContext);
@@ -28,7 +29,7 @@ export default function AdminPanel() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await authUtils.authenticatedRequest('http://localhost:4000/users');
+                const response = await authUtils.authenticatedRequest(`${apiBaseUrl}/users`);
                 setUserList(response);
                 console.log('User List:', response);
 
@@ -43,13 +44,13 @@ export default function AdminPanel() {
     const fetchApplications = async () => {
         try {
             // First get all job postings by this user
-            const jobsResponse = await axios.get(`http://localhost:4000/job_postings`);
+            const jobsResponse = await axios.get(`${apiBaseUrl}/job_postings`);
             const userJobs = jobsResponse.data.filter(job => job.user_id === userData.user_id);
             
             // Get applications for each job
             const allApplications = [];
             for (const job of userJobs) {
-                const applicationsResponse = await axios.get(`http://localhost:4000/applications/job/${job.job_id}`);
+                const applicationsResponse = await axios.get(`${apiBaseUrl}/applications/job/${job.job_id}`);
                 // Add job title to each application for context
                 const applicationsWithJobInfo = applicationsResponse.data.map(app => ({
                     ...app,
@@ -68,7 +69,7 @@ export default function AdminPanel() {
     const unapprovedPosts = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:4000/job_postings/pending`, {
+            const response = await fetch(`${apiBaseUrl}/job_postings/pending`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -106,7 +107,7 @@ export default function AdminPanel() {
         }
         const fetchAdminStatus = async () => {
             try {
-                const response = await axios.get(`http://localhost:4000/users/${userData.user_id}/admin-status`);
+                const response = await axios.get(`${apiBaseUrl}/users/${userData.user_id}/admin-status`);
                 if (response.data.isAdmin) {
                     setUserData(prevData => ({ ...prevData, isAdmin: true }));
                     unapprovedPosts(); // Call this only if the user is an admin
@@ -124,7 +125,7 @@ export default function AdminPanel() {
     const fetchJobPost = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:4000/job_postings', {
+            const response = await fetch(`${apiBaseUrl}/job_postings`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -169,7 +170,7 @@ export default function AdminPanel() {
     useEffect(() => {
         const fetchStudentApplications = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/applications/user/${userData.user_id}`);
+                const response = await fetch(`${apiBaseUrl}/applications/user/${userData.user_id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch applications');
                 }
@@ -203,7 +204,7 @@ export default function AdminPanel() {
 
                 if (!jobId) throw new Error("Job ID not found.");
 
-                const response = await fetch(`http://localhost:4000/job_postings/${jobId}`, {
+                const response = await fetch(`${apiBaseUrl}/job_postings/${jobId}`, {
                     method: "DELETE",
                 });
 
@@ -224,7 +225,7 @@ export default function AdminPanel() {
     const handleApprovePost = async (jobId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:4000/job_postings/${jobId}/toggle-approval`, {
+            const response = await fetch(`${apiBaseUrl}/job_postings/${jobId}/toggle-approval`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -248,7 +249,7 @@ export default function AdminPanel() {
     const handleDeletePost = async (jobId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:4000/job_postings/${jobId}`, {
+            const response = await fetch(`${apiBaseUrl}/job_postings/${jobId}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`,
