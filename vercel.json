@@ -1,7 +1,10 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "build",
+  "version": 2,
+  "buildCommand": "npm install && npm run build",
+  "outputDirectory": "Main/build",
+  "installCommand": "npm install",
   "framework": "create-react-app",
+  "rootDirectory": "Main",
   "routes": [
     {
       "src": "/static/(.*)",
