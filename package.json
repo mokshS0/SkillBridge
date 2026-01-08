@@ -1,0 +1,24 @@
+{
+  "name": "skillbridge-backend-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SkillBridge Backend - Root configuration for Railway",
+  "main": "Main/server/index.js",
+  "scripts": {
+    "install": "cd Main/server && npm install",
+    "build": "cd Main/server && npm install",
+    "start": "cd Main/server && npm start"
+  },
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mokshS0/SkillBridge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
