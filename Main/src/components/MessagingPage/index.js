@@ -20,6 +20,7 @@ import MenuInterior from '../MenuInterior'
 import { authUtils } from '../../utils/auth'
 import { useNavigate } from 'react-router-dom'
 import { Avatar } from 'primereact/avatar'
+import { apiBaseUrl } from '../../config/config'
 
 const AIAssistantPage = () => {
   const navigate = useNavigate()
@@ -84,7 +85,7 @@ const AIAssistantPage = () => {
     setIsTyping(true)
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch(`${apiBaseUrl}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
