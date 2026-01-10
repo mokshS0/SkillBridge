@@ -80,26 +80,20 @@ export default function AccountPage() {
 
   useScrollToTop()
 
-  // AI suggestion handler - using mock bio directly for demo
+  // AI suggestion handler - calls actual Gemini API
   const handleAISuggestion = async () => {
     if (!aiSuggestion.trim()) return
     setLoading(true)
     try {
-      // Use mock bio directly without making network call
-      const mockBio = `Experienced professional with a passion for ${aiSuggestion || 'technology'}. 
-Dedicated to continuous learning and professional growth.`
-      setAISuggestion(mockBio)
-      
-      // OLD CODE - COMMENTED OUT (uncomment to enable AI bio generation via API)
-      // console.log('Generating AI bio for:', aiSuggestion)
-      // const generatedBio = await getAISuggestedBio(aiSuggestion)
-      // setAISuggestion(generatedBio)
+      console.log('Generating AI bio for:', aiSuggestion)
+      const generatedBio = await getAISuggestedBio(aiSuggestion)
+      setAISuggestion(generatedBio)
     } catch (error) {
       console.error('Error generating AI bio:', error)
       toast.current.show({
         severity: 'error',
         summary: 'Error',
-        detail: 'Failed to generate AI suggestion',
+        detail: 'Failed to generate AI suggestion. Please try again.',
         life: 3000
       })
     } finally {

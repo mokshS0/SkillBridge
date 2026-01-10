@@ -4,13 +4,19 @@ export const getAISuggestedBio = async (input) => {
   try {
     const token = localStorage.getItem('token');
     
+    // Get user data if available
+    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    
     const response = await fetch(`${apiBaseUrl}/generate-bio`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}` // Add authentication header
+        'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({ userInput: input }),
+      body: JSON.stringify({ 
+        userInput: input,
+        userInfo: userData // Pass user info for better context
+      }),
     });
 
     if (!response.ok) {
@@ -21,7 +27,7 @@ export const getAISuggestedBio = async (input) => {
     const data = await response.json();
     return data.bio;
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error generating bio:', error);
     throw error;
   }
 };
