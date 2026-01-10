@@ -300,10 +300,12 @@ Dedicated to continuous learning and professional growth.`
     
     try {
       console.log('Updating user information:', updatedUserInfo)
+      const token = localStorage.getItem('token');
       const response = await fetch(`${apiBaseUrl}/users/${userData.user_id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}` // Add Authorization header
         },
         body: JSON.stringify(updatedUserInfo),
       })
@@ -333,11 +335,12 @@ Dedicated to continuous learning and professional growth.`
         })
         setVisibleEdit(false)
       } else {
-        console.error('Failed to update user information:', response.status, response.statusText)
+        const errorData = await response.json().catch(() => ({ message: 'Failed to update user' }));
+        console.error('Failed to update user information:', response.status, response.statusText, errorData)
         toast.current.show({
           severity: 'error',
           summary: 'Error',
-          detail: 'Failed to save information',
+          detail: errorData.message || 'Failed to save information',
           life: 3000
         })
       }

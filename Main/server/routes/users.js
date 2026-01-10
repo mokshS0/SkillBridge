@@ -133,5 +133,52 @@ router.get('/:userId/admin-status', auth, async (req, res) => {
   }
 });
 
+// PUT /users/:userId (update user)
+router.put('/:userId', auth, async (req, res) => {
+  try {
+    const user = await User.findOne({ user_id: req.params.userId });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Update only fields that are provided in the request
+    const allowedFields = [
+      'real_name',
+      'personal_email',
+      'phone_number',
+      'birth_date',
+      'school_name',
+      'school_district',
+      'school_email',
+      'account_username',
+      'city',
+      'state',
+      'bio',
+      'profile_img_url',
+      'avatar_name'
+    ];
+
+    allowedFields.forEach(field => {
+      if (req.body[field] !== undefined) {
+        if (field === 'birth_date' && req.body[field]) {
+          user[field] = new Date(req.body[field]);
+        } else {
+          user[field] = req.body[field];
+        }
+      }
+    });
+
+    await user.save();
+
+    // Return user without password
+    const userObj = user.toObject();
+    delete userObj.password;
+    res.json(userObj);
+  } catch (err) {
+    console.error('Error updating user:', err.message);
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+});
+
 module.exports = router;
 

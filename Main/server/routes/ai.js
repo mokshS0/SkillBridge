@@ -218,12 +218,6 @@ router.post('/generate-bio', auth, async (req, res) => {
   try {
     const { userInfo, userInput } = req.body;
     
-    // Always return mock bio for demo purposes (AI code commented out below)
-    const mockBio = `Experienced professional with a passion for ${userInfo?.field || userInput || 'technology'}. 
-Dedicated to continuous learning and professional growth.`;
-    return res.json({ bio: mockBio });
-
-    /* AI CODE - COMMENTED OUT FOR DEMO (uncomment to enable AI bio generation)
     // If Gemini is not configured, return mock data
     if (!genAI || !process.env.GEMINI_API_KEY) {
       console.warn('Gemini not configured, returning mock bio');
@@ -232,12 +226,13 @@ Dedicated to continuous learning and professional growth.`;
       return res.json({ bio: mockBio });
     }
 
-    // Build prompt for bio generation
+    // Build prompt for bio generation - short, small, no formatting
     const userData = userInfo || {};
     const existingBio = userInput || userData.bio || '';
     
-    const prompt = `Generate a professional, engaging bio (2-3 sentences, max 200 words) for a user with the following information:
+    const prompt = `Generate a short professional bio (2-3 sentences, max 100 words, plain text only, no formatting, no markdown, no asterisks, no bold, no special characters). 
 
+User information:
 ${userData.real_name ? `Name: ${userData.real_name}` : ''}
 ${userData.school_name ? `School: ${userData.school_name}` : ''}
 ${userData.skills ? `Skills: ${userData.skills.map(s => s.skill_name || s).join(', ')}` : ''}
@@ -246,7 +241,7 @@ ${userData.achievements ? `Achievements: ${userData.achievements.map(a => a.achi
 ${userData.history ? `Experience: ${userData.history.map(h => h.title || h).join(', ')}` : ''}
 ${existingBio ? `Current bio: ${existingBio}` : ''}
 
-Create a professional, concise bio that highlights their strengths and experience. Make it engaging and suitable for a professional networking platform.`;
+Return only plain text. No markdown formatting, no asterisks, no bold text, no special characters. Just simple sentences.`;
 
     const model = await getModel();
     if (!model) {
@@ -254,15 +249,24 @@ Create a professional, concise bio that highlights their strengths and experienc
     }
 
     const result = await model.generateContent(prompt);
-    const generatedBio = result.response.text().trim();
+    let generatedBio = result.response.text().trim();
+    
+    // Remove any markdown formatting that might slip through
+    generatedBio = generatedBio
+      .replace(/\*\*/g, '') // Remove bold markdown
+      .replace(/\*/g, '') // Remove italic markdown
+      .replace(/__/g, '') // Remove underline markdown
+      .replace(/_/g, '') // Remove italic markdown
+      .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Remove links but keep text
+      .replace(/#{1,6}\s*/g, '') // Remove heading markdown
+      .trim();
 
     res.json({ bio: generatedBio });
-    */
 
   } catch (err) {
     console.error('AI bio generation error:', err.message);
     // Fallback to mock bio
-    const mockBio = `Experienced professional with a passion for ${req.body.userInfo?.field || 'technology'}. 
+    const mockBio = `Experienced professional with a passion for ${req.body.userInfo?.field || req.body.userInput || 'technology'}. 
 Dedicated to continuous learning and professional growth.`;
     res.json({ bio: mockBio });
   }
@@ -282,7 +286,8 @@ router.post('/api/chat', auth, async (req, res) => {
 
     const systemPrompt = `You are a helpful career and job search assistant for SkillBridge, a platform connecting students with job opportunities. 
 Help users with career advice, job search tips, application guidance, and platform navigation.
-Be friendly, professional, and concise. Keep responses under 200 words.`;
+Be friendly, professional, and concise. Keep responses under 200 words.
+IMPORTANT: Return only plain text. Do not use any markdown formatting. No asterisks, no bold text, no special characters. Just simple, readable text.`;
 
     const userPrompt = `User context:
 ${userData?.real_name ? `Name: ${userData.real_name}` : ''}
@@ -303,7 +308,19 @@ Context: ${context || 'general'}`;
     }
 
     const result = await model.generateContent(fullPrompt);
-    const response = result.response.text().trim();
+    let response = result.response.text().trim();
+    
+    // Remove any markdown formatting that might slip through
+    response = response
+      .replace(/\*\*/g, '') // Remove bold markdown
+      .replace(/\*/g, '') // Remove italic markdown
+      .replace(/__/g, '') // Remove underline markdown
+      .replace(/_/g, '') // Remove italic markdown
+      .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Remove links but keep text
+      .replace(/#{1,6}\s*/g, '') // Remove heading markdown
+      .replace(/`([^`]+)`/g, '$1') // Remove inline code
+      .replace(/```[\s\S]*?```/g, '') // Remove code blocks
+      .trim();
 
     res.json({ response });
 
