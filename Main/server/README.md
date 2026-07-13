@@ -1,159 +1,105 @@
-# SkillBridge Backend API
+# SkillBridge Backend
 
-Complete Express + MongoDB backend for the SkillBridge platform.
+Express + MongoDB API for SkillBridge.
 
-## 📁 Project Structure
+## Structure
 
 ```
 server/
-├── config/          # Database configuration
-├── middleware/      # Authentication middleware
-├── models/         # MongoDB schemas (User, JobPosting, Application, etc.)
-├── routes/         # API route handlers
-│   ├── auth.js           # Authentication endpoints
-│   ├── users.js          # User management
-│   ├── jobPostings.js    # Job posting CRUD
-│   ├── applications.js   # Application management
-│   ├── userProfile.js    # User profile data (skills, projects, etc.)
-│   └── ai.js             # AI features (placeholder)
-└── index.js        # Main server file
+├── config/
+├── middleware/
+├── models/
+├── routes/
+│   ├── auth.js
+│   ├── users.js
+│   ├── jobPostings.js
+│   ├── applications.js
+│   ├── userProfile.js
+│   └── ai.js
+└── index.js
 ```
 
-## 🚀 Quick Start
+## Setup
 
-### Prerequisites
-- Node.js (v14+)
-- MongoDB Atlas account or local MongoDB
+Needs Node.js (v14+) and MongoDB.
 
-### Setup
-
-1. **Install dependencies:**
-   ```powershell
-   npm install
-   ```
-
-2. **Create `.env` file:**
-   ```env
-   MONGO_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/skillbridge?retryWrites=true&w=majority
-   JWT_SECRET=your-secret-key-change-this
-   PORT=4000
-   ```
-
-3. **Start the server:**
-   ```powershell
-   # Development (with auto-reload)
-   npm run dev
-   
-   # Production
-   npm start
-   ```
-
-## 📚 API Documentation
-
-### Authentication
-- `POST /sign-in` - Login with username/password
-- `GET /get-user?username=...` - Get user by username
-- `GET /get-user/:userId` - Get user by ID
-
-### Users
-- `POST /users` - Register new user
-- `GET /users` - List all users
-- `GET /users/:userId` - Get user details
-- `GET /users/:userId/job-posts/count` - Get user's job post count
-- `GET /users/:userId/projects/count` - Get user's project count
-
-### Job Postings
-- `GET /job_postings` - List all job postings
-- `GET /job_postings/pending` - List pending postings
-- `GET /job_postings/:jobId` - Get specific posting
-- `POST /job_postings` - Create new posting
-- `PUT /job_postings/:jobId` - Update posting
-- `PUT /job_postings/:jobId/toggle-approval` - Toggle approval
-- `DELETE /job_postings/:jobId` - Delete posting
-
-### Applications
-- `GET /applications` - List applications (supports ?job_id= & ?user_id=)
-- `GET /applications/job/:jobId` - Get applications for a job
-- `GET /applications/user/:userId` - Get user's applications
-- `POST /applications` - Create application
-- `PUT /applications/:applicationId/status` - Update status
-- `DELETE /applications/:applicationId` - Delete application
-
-### User Profile Data
-- `GET /user_skills?user_id=...` - Get user skills
-- `POST /user_skills` - Add skill
-- `PUT /user_skills/:id` - Update skill
-- `DELETE /user_skills/:id` - Delete skill
-
-- `GET /user_projects?user_id=...` - Get user projects
-- `POST /user_projects` - Add project
-- `PUT /user_projects/:id` - Update project
-- `DELETE /user_projects/:id` - Delete project
-
-- `GET /user_history?user_id=...` - Get user history
-- `POST /user_history` - Add history entry
-- `PUT /user_history/:id` - Update history
-- `DELETE /user_history/:id` - Delete history
-
-- `GET /user_achievements?user_id=...` - Get achievements
-- `POST /user_achievements` - Add achievement
-- `PUT /user_achievements/:id` - Update achievement
-- `DELETE /user_achievements/:id` - Delete achievement
-
-### AI Features (Placeholder)
-- `POST /generate-filter` - Generate job filters
-- `POST /generate-bio` - Generate user bio
-
-## 🔐 Authentication
-
-Most endpoints require JWT authentication. Include token in header:
 ```
-Authorization: Bearer <your-token>
+npm install
 ```
 
-## 🗄️ Database Models
+Create a `.env` file:
 
-- **User** - User accounts with profile information
-- **JobPosting** - Job postings created by teachers
-- **Application** - Job applications from students
-- **UserSkill** - User skills
-- **UserProject** - User projects
-- **UserHistory** - Work/education history
-- **UserAchievement** - User achievements
+```
+MONGO_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/skillbridge?retryWrites=true&w=majority
+JWT_SECRET=your-secret-key-change-this
+PORT=4000
+```
 
-## 🔧 MongoDB Setup
+```
+npm run dev   # with auto-reload
+npm start     # production
+```
 
-### Using MongoDB Atlas (Cloud)
+## API
 
-1. Create account at https://cloud.mongodb.com
-2. Create a cluster (free tier available)
-3. Create database user in "Database Access"
-4. Whitelist IP in "Network Access" (or allow from anywhere for dev)
-5. Get connection string from "Connect" → "Connect your application"
-6. Update `.env` with your connection string
+Auth
+- `POST /sign-in`
+- `GET /get-user?username=...`
+- `GET /get-user/:userId`
 
-### Using Local MongoDB
+Users
+- `POST /users`
+- `GET /users`
+- `GET /users/:userId`
+- `GET /users/:userId/job-posts/count`
+- `GET /users/:userId/projects/count`
 
-1. Install MongoDB Community Edition
-2. Start MongoDB service
-3. Use connection string: `mongodb://127.0.0.1:27017/skillbridge`
+Job postings
+- `GET /job_postings`
+- `GET /job_postings/pending`
+- `GET /job_postings/:jobId`
+- `POST /job_postings`
+- `PUT /job_postings/:jobId`
+- `PUT /job_postings/:jobId/toggle-approval`
+- `DELETE /job_postings/:jobId`
 
-## ⚠️ Troubleshooting
+Applications
+- `GET /applications` (supports `?job_id=` and `?user_id=`)
+- `GET /applications/job/:jobId`
+- `GET /applications/user/:userId`
+- `POST /applications`
+- `PUT /applications/:applicationId/status`
+- `DELETE /applications/:applicationId`
 
-**"bad auth : authentication failed"**
-- Check username/password in connection string
-- Verify database user exists in MongoDB Atlas
-- URL-encode special characters in password (@ → %40, # → %23, etc.)
+Profile data
+- skills / projects / history / achievements under `/user_skills`, `/user_projects`, `/user_history`, `/user_achievements` (GET/POST/PUT/DELETE)
 
-**"Cannot find module"**
-- Run `npm install` in server directory
+AI
+- `POST /generate-filter`
+- `POST /generate-bio`
 
-**Port already in use**
-- Change `PORT` in `.env` file
+Most endpoints need a JWT:
 
-## 📝 Notes
+```
+Authorization: Bearer <token>
+```
 
-- All passwords are hashed with bcrypt
-- JWT tokens expire after 7 days
-- AI endpoints return mock data (integrate OpenAI for production)
-- For production, use a strong `JWT_SECRET` and restrict MongoDB network access
+## Models
+
+User, JobPosting, Application, UserSkill, UserProject, UserHistory, UserAchievement
+
+## MongoDB
+
+Atlas: create a cluster, DB user, whitelist your IP, copy the connection string into `.env`.
+
+Local: `mongodb://127.0.0.1:27017/skillbridge`
+
+## Troubleshooting
+
+Auth failed — check username/password in the URI; URL-encode special characters in the password.
+
+Missing module — run `npm install` in this folder.
+
+Port in use — change `PORT` in `.env`.
+
+Passwords are hashed with bcrypt. JWTs expire after 7 days. Use a strong `JWT_SECRET` in production.

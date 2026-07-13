@@ -1,164 +1,70 @@
-# SkillBridge Platform
+# SkillBridge
 
-A full-stack platform connecting students with job opportunities and teachers with talent.
+Full-stack app connecting students with job opportunities and teachers with applicants.
 
-## 📁 Project Structure
+## Structure
 
 ```
 SkillBridge/
-├── server/              # Backend API (Node.js + Express + MongoDB)
-│   ├── config/         # Database configuration
-│   ├── middleware/     # Authentication middleware
-│   ├── models/         # MongoDB schemas
-│   ├── routes/         # API endpoints
-│   └── index.js        # Server entry point
+├── server/          # Node + Express + MongoDB API
+│   ├── config/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   └── index.js
 │
-└── src/                # Frontend (React)
-    ├── components/     # React components
-    │   ├── AccountPage/      # User account management
-    │   ├── AdminDashBoard/   # Admin dashboard
-    │   ├── AdminPanel/       # Admin panel
-    │   ├── ContactDashBoard/ # Contact/FAQ dashboard
-    │   ├── Footer/           # Footer component
-    │   ├── Home/             # Home page
-    │   ├── Interior/         # Main interior pages
-    │   ├── Layout/           # Layout components
-    │   ├── MenubarLanding/   # Landing page menu
-    │   ├── MenuInterior/     # Interior menu
-    │   ├── MessagingPage/    # Messaging interface
-    │   ├── PreviewModule/    # Preview components
-    │   ├── SignIn/           # Sign in page
-    │   ├── SignUp/           # Sign up page
-    │   └── UserPosts/        # User posts management
-    ├── assets/         # Static assets (images, fonts)
-    ├── config/         # Frontend configuration
-    ├── context/        # React context providers
-    └── utils/          # Utility functions
+└── src/             # React frontend
+    ├── components/
+    ├── assets/
+    ├── config/
+    ├── context/
+    └── utils/
 ```
 
-## 🚀 Quick Start
+## Setup
 
-### Prerequisites
-- Node.js (v14+)
-- MongoDB Atlas account or local MongoDB
-- npm or yarn
+Needs Node.js (v14+), MongoDB, and npm.
 
-### Backend Setup
+Backend:
 
-1. **Navigate to server directory:**
-   ```powershell
-   cd server
-   ```
+```
+cd server
+npm install
+```
 
-2. **Install dependencies:**
-   ```powershell
-   npm install
-   ```
+Create `server/.env`:
 
-3. **Create `.env` file:**
-   ```env
-   MONGO_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/skillbridge?retryWrites=true&w=majority
-   JWT_SECRET=your-secret-key-change-this
-   PORT=4000
-   ```
-
-4. **Start the backend:**
-   ```powershell
-   npm start
-   # or for development with auto-reload:
-   npm run dev
-   ```
-
-The backend will run on `http://localhost:4000`
-
-### Frontend Setup
-
-1. **Navigate to project root:**
-   ```powershell
-   cd ..
-   ```
-
-2. **Install dependencies:**
-   ```powershell
-   npm install
-   ```
-
-3. **Start the frontend:**
-   ```powershell
-   npm start
-   ```
-
-The frontend will run on `http://localhost:3000`
-
-## 📚 Documentation
-
-- **Backend API**: See [server/README.md](./server/README.md) for complete API documentation
-- **Frontend**: React components organized by feature/page
-
-## 🛠️ Tech Stack
-
-### Backend
-- **Node.js** - Runtime environment
-- **Express** - Web framework
-- **MongoDB** - Database (via Mongoose)
-- **JWT** - Authentication
-- **bcryptjs** - Password hashing
-
-### Frontend
-- **React** - UI framework
-- **React Router** - Routing
-- **PrimeReact** - UI component library
-- **SCSS** - Styling
-- **Axios** - HTTP client
-
-## 🔐 Environment Variables
-
-### Backend (.env in `server/` folder)
-```env
-MONGO_URI=your-mongodb-connection-string
-JWT_SECRET=your-jwt-secret-key
+```
+MONGO_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/skillbridge?retryWrites=true&w=majority
+JWT_SECRET=your-secret-key-change-this
 PORT=4000
 ```
 
-### Frontend
-The frontend is configured to connect to `http://localhost:4000` by default (see `src/config/config.js`)
+Then `npm start` or `npm run dev`. Runs on `http://localhost:4000`.
 
-## 📝 Development Workflow
+Frontend (from `Main/`):
 
-1. Start MongoDB (local or ensure Atlas is accessible)
-2. Start backend server: `cd server && npm start`
-3. Start frontend: `npm start` (from root)
-4. Open browser to `http://localhost:3000`
-
-## 🗂️ Key Features
-
-- User authentication and authorization
-- Job posting management
-- Application system
-- User profiles (skills, projects, history, achievements)
-- Admin dashboard
-- Teacher/Student role separation
-
-## 📦 Build for Production
-
-### Backend
-```powershell
-cd server
+```
+npm install
 npm start
 ```
 
-### Frontend
-```powershell
-npm run build
-```
-This creates an optimized production build in the `build/` folder.
+Runs on `http://localhost:3000`. Frontend points at `http://localhost:4000` by default (`src/config/config.js`).
 
-## 🤝 Contributing
+## Tech
 
-1. Ensure backend and frontend are properly separated
-2. Follow the existing folder structure
-3. Update documentation as needed
+Backend: Node, Express, MongoDB/Mongoose, JWT, bcryptjs
 
-## 📄 License
+Frontend: React, React Router, PrimeReact, SCSS, Axios
 
-Private project
+## Features
+
+User auth, job posts, applications, profiles (skills/projects/history/achievements), admin dashboard, student/teacher roles.
+
+## Production build
+
+Frontend: `npm run build` (output in `build/`)
+
+Backend: `cd server && npm start`
+
+API docs: [server/README.md](./server/README.md)
